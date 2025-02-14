@@ -25,8 +25,16 @@ const assinatura = assinador.sign(privateKey, "hex");
 
 console.log(`Assinatura: ${assinatura}`);
 
+// Intermediário
+
+dados = "dados alterados";
+
 //Envio desse docmento ----------- Documento, assinatura e chave pública
 
 const verificador = createVerify("rsa-sha256");
 
 verificador.update(dados);
+
+const ehVerificado = verificador.verify(publicKey, assinatura, "hex");
+
+console.log(ehVerificado);

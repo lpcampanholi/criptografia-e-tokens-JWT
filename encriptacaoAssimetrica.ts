@@ -18,7 +18,7 @@ const { privateKey, publicKey } = generateKeyPairSync("rsa", {
 
 import { publicEncrypt, privateDecrypt } from "crypto";
 
-const dadosCriptografados = publicEncrypt(
+const dadosCriptografados: Buffer = publicEncrypt(
   publicKey,
   Buffer.from("Mensagem super secreta")
 );
@@ -27,6 +27,6 @@ console.log(dadosCriptografados.toString("hex"));
 
 // ---------------- Transmissão ---------------------
 
-const dadosDecifrados = privateDecrypt(privateKey, dadosCriptografados);
+const dadosDecifrados: Buffer = privateDecrypt(privateKey, dadosCriptografados);
 
 console.log(`Dados decifrados: ${dadosDecifrados.toString("utf-8")}`);
